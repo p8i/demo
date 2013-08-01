@@ -1,4 +1,43 @@
+
+<?php 
+require_once("includes/config.php"); 
+
+
+$sql = "SELECT * FROM site_content";
+$myData = $db->query($sql);
+
+while($row = $myData->fetch_assoc()) {
+
+if($row["section_name"] == "intro")
+{
+$intro= $row["content"];
+}
+if($row["section_name"] == "blurb")
+{
+$blurb= $row["content"];
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+?>
+
+
+
+
 <?php $page = "home"; ?> 
+
+
+
+
 
 
 
@@ -21,8 +60,8 @@
   				</figcaption>
   			</figure>
             
-            <p>This is a test.</p>
-            <p>This is another test.</p>
+            <p><?php echo @$intro;?></p>
+            <p><?php echo @$blurb;?></p>
   		</section>
 		
 		<?php include_once("includes/sidebar.inc.php"); ?>
