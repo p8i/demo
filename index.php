@@ -2,16 +2,26 @@
 <?php 
 require_once("includes/config.php"); 
 
-
+//query the database and store the results
+//in the $myData variable
 $sql = "SELECT * FROM site_content";
 $myData = $db->query($sql);
 
+//loop through the associative array 
+//$mydaya->... pulls out the first item in the array 
 while($row = $myData->fetch_assoc()) {
 
+//row is set to "n" (no)
+if($row["view"] == "n")
+{
+continue; 
+}
+//row is set to intro 
 if($row["section_name"] == "intro")
 {
 $intro= $row["content"];
 }
+//row is set to blurb
 if($row["section_name"] == "blurb")
 {
 $blurb= $row["content"];
